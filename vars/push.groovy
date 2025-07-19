@@ -9,7 +9,7 @@ def call(String imageName, String dockerTag){
   ]){
     echo "Pushing the code..."
     sh "docker login -u ${dockerUser} -p ${dockerPass}"
-    sh "docker push ${dockerUser}/${imageName}:v1${dockerTag}"
+    sh "docker push ${dockerUser}/${imageName}:v${dockerTag}"
     echo "Push successful..."
   }
 }
