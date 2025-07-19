@@ -1,4 +1,4 @@
-def call(String imageName){
+def call(String imageName, String dockerTag){
   withCredentials([
     usernamePassword(
       credentialsId: "dockerHubCred",
@@ -9,7 +9,7 @@ def call(String imageName){
   ]){
     echo "Pushing the code..."
     sh "docker login -u ${dockerUser} -p ${dockerPass}"
-    sh "docker push ${dockerUser}/${imageName}"
+    sh "docker push ${dockerUser}/${imageName}:v1${dockerTag}"
     echo "Push successful..."
   }
 }
